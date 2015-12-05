@@ -5,7 +5,7 @@
 'use strict';
 
 angular.module('myApp', ['ui.router',
-                         'myApp.controllers'])
+                         'myApp.controllers', 'ngResource', 'myApp.services'])
 
   .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
     $stateProvider
@@ -15,7 +15,7 @@ angular.module('myApp', ['ui.router',
         controller: 'PostsIndexCtrl'
       });
 
-    $urlRouterProvider.otherwise("/state1");
+    $urlRouterProvider.otherwise("/");
 
     $locationProvider.html5Mode({
         enabled: true,

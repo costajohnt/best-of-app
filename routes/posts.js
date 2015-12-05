@@ -15,7 +15,7 @@ postRouter.route('/')  // translates to '/api/posts/'
   .post(function(req,res){  
    // var post = new Post({ content: req.body.content });
    // post.save(function (err, post) {
-    Post.create({ content: req.body.content }, function(err, post){
+    Post.create(req.body, function(err, post){
       if (err) { return res.send(err); }
       console.log(post);
       res.status(201).send(post);
