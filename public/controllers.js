@@ -10,6 +10,7 @@ angular.module('myApp.controllers', [])
   }])
 
   //POSTS
+  // *** HAVING 'Comment' IN THE CONTROLLER PREVENTS YOUR POSTS FROM DISPLAYING. REMOVE TO SEE POSTS DISPLAYED. I THOUGHT I WOULD NEED IT BUT IT CAUSES ERRORS. ***
   .controller('PostsIndexCtrl', ['Post', 'Comment', '$scope', '$location', '$http', function (Post, Comment, $scope, $location, $http) {
     // GET POSTS
     $scope.posts = Post.query();
