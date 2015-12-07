@@ -9,7 +9,8 @@ var PostSchema = new Schema({
     created_at: { type: Date, default: Date.now() },
     updated_at: { type: Date },
     title: { type: String, required: true, trim: true },
-    reason: { type: String, required: true, trim: true }
+    reason: { type: String, required: true, trim: true },
+    comments: [{type: Schema.Types.ObjectId, ref: 'Comment'}]
 });
 
 // MIDDLEWARE

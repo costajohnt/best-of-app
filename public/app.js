@@ -15,6 +15,13 @@ angular.module('myApp', ['ui.router',
         controller: 'PostsIndexCtrl'
       });
 
+    $stateProvider
+      .state('comments', {
+        url: "/",
+        templateUrl: 'templates/posts-index',
+        controller: 'PostsIndexCtrl'
+      });
+
     $urlRouterProvider.otherwise("/");
 
     $locationProvider.html5Mode({

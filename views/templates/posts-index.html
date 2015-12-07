@@ -9,9 +9,21 @@
 <hr>
 <ul class='list-group'>
   <li ng-repeat="post in posts" class='list-group-item'>
-    {{post.title}}{{post.reason}}
-    <a href="#" class='pull-right' ng-click="deletePost(post)">
-      <i class='icon ion-close-circled'></i>
-    </a>
+    <div>
+      {{post.title}}{{post.reason}}
+      <a href="#" class='pull-right' ng-click="deletePost(post)">
+        <i class='icon ion-close-circled'></i>
+      </a>
+    </div>
+    <br>
+    <form ng-submit="addComment(comment)">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Add Comment..." ng-model="comment.body"></input>
+      </div>
+      <button type="submit" class="btn btn-primary">Post</button>
+    </form>
+    <div ng-repeat="comment in post.comments">
+      {{comment.body}}
+    </div>
   </li>
 </ul>
