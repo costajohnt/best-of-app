@@ -10,9 +10,14 @@ angular.module('myApp.controllers', [])
   }])
 
   //POSTS
-  .controller('PostsIndexCtrl', ['Post', '$scope', '$location', '$http', function (Post, $scope, $location, $http) {
+  // *** HAVING 'Comment' IN THE CONTROLLER PREVENTS YOUR POSTS FROM DISPLAYING. REMOVE TO SEE POSTS DISPLAYED. I THOUGHT I WOULD NEED IT BUT IT CAUSES ERRORS. ***
+  .controller('PostsIndexCtrl', ['Post', 'Comment', '$scope', '$location', '$http', function (Post, Comment, $scope, $location, $http) {
     // GET POSTS
     $scope.posts = Post.query();
+    // $scope.post = posts.posts[$stateParams.id];
+    // $scope.posts.comments = Post.comments;
+    // $scope.posts.comments = Post.post.comments;
+
 
     // CREATE A POST    
     $scope.createPost = function() {
@@ -29,4 +34,16 @@ angular.module('myApp.controllers', [])
         $scope.posts.splice(index, 1);
       });
     };
-}]);
+
+    // CREATE A COMMENT
+    $scope.addComment = function(){
+      // console.log(comment);
+      var comment = new Comment($scope.comment);
+      comment.$save(function(data) {
+        $scope.posts.comments.unshift(data);
+        $scope.posts.comment= {};
+      });
+    };
+
+
+  }]); // PostsIndexCtrl
